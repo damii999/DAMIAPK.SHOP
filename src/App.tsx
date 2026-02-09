@@ -56,6 +56,7 @@ const categories = ['Action', 'RPG', 'Puzzle', 'Shooter', 'Sports', 'Multiplayer
 export function App() {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const filteredGames = games.filter(game =>
     game.name.toLowerCase().includes(search.toLowerCase()) &&
     (selectedCategory === 'All' || game.category === selectedCategory)
@@ -163,7 +164,9 @@ export function App() {
                   <span>{game.category}</span>
                   <span>{game.downloads}M DLs</span>
                 </div>
-                <button className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-2xl py-3 px-6 font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-2xl hover:shadow-cyan-400/40 transition-all duration-300 text-white">
+                <button className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-2xl py-3 px-6 font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-2xl hover:shadow-cyan-400/40 transition-all duration-300 text-white"
+                  onClick={() => setSelectedGame(game)}
+                >
                   Download APK
                 </button>
               </div>
@@ -246,6 +249,69 @@ export function App() {
           </div>
         </div>
       </footer>
+
+      {/* Download Modal */}
+      {selectedGame && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setSelectedGame(null)}>
+          <div className="bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 rounded-3xl p-8 max-w-lg w-full shadow-2xl shadow-cyan-500/20" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-start mb-6">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">{selectedGame.name}</h3>
+              <button onClick={() => setSelectedGame(null)} className="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            
+            <div className="mb-6">
+              <img src={selectedGame.image} alt={selectedGame.name} className="w-full h-48 object-cover rounded-2xl mb-4" />
+              <p className="text-gray-300 mb-4">{selectedGame.desc}</p>
+              
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="bg-white/5 rounded-xl p-3">
+                  <p className="text-gray-400 text-sm">Rating</p>
+                  <p className="text-xl font-bold text-yellow-400">{selectedGame.rating} ★</p>
+                </div>
+                <div className="bg-white/5 rounded-xl p-3">
+                  <p className="text-gray-400 text-sm">Downloads</p>
+                  <p className="text-xl font-bold text-cyan-400">{selectedGame.downloads}M+</p>
+                </div>
+                <div className="bg-white/5 rounded-xl p-3">
+                  <p className="text-gray-400 text-sm">Category</p>
+                  <p className="text-xl font-bold text-purple-400">{selectedGame.category}</p>
+                </div>
+                <div className="bg-white/5 rounded-xl p-3">
+                  <p className="text-gray-400 text-sm">Size</p>
+                  <p className="text-xl font-bold text-green-400">~100MB</p>
+                </div>
+              </div>
+
+              <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mb-6">
+                <p className="text-yellow-400 text-sm font-semibold mb-2">⚠️ Important Instructions:</p>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Enable "Unknown Sources" in Settings</li>
+                  <li>• Uninstall original app if installed</li>
+                  <li>• Download may take 1-2 minutes</li>
+                  <li>• Scan with antivirus after download</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <a 
+                href={`https://www.apkmirror.com/?s=${encodeURIComponent(selectedGame.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-2xl py-4 px-6 font-bold text-center shadow-lg shadow-cyan-500/25 hover:shadow-2xl hover:shadow-cyan-400/40 transition-all duration-300 text-white"
+              >
+                Download APK Now
+              </a>
+              <button 
+                onClick={() => setSelectedGame(null)}
+                className="block w-full bg-white/5 hover:bg-white/10 border border-white/20 rounded-2xl py-3 px-6 font-semibold text-center transition-all duration-300 text-gray-300"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
