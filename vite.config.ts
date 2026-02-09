@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/your-repo-name/', // Replace 'your-repo-name' with your actual GitHub repo name
+  base: '/DAMIAPK.SHOP/', // Replace 'your-repo-name' with your actual GitHub repo name
   plugins: [react(), tailwindcss(), viteSingleFile()],
   resolve: {
     alias: {
