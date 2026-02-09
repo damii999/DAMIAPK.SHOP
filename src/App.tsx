@@ -27,29 +27,31 @@ interface Guide {
 }
 
 const games: Game[] = [
-  { id: 1, name: 'PUBG Mobile MOD Unlimited UC', desc: 'Battle royale with premium unlocks and no ads.', rating: 4.8, image: 'https://images.unsplash.com/photo-1611606066626-b9b11ed6a2b0?w=300&h=400&fit=crop', category: 'Action', downloads: 1.2 },
-  { id: 2, name: 'Genshin Impact v5.1 APK', desc: 'Open-world adventure with stunning graphics.', rating: 4.9, image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=300&h=400&fit=crop', category: 'RPG', downloads: 850 },
-  { id: 3, name: 'Candy Crush Saga MOD', desc: 'Unlimited lives and boosters unlocked.', rating: 4.7, image: 'https://images.unsplash.com/photo-1579044373921-f9a455a7aa54?w=300&h=400&fit=crop', category: 'Puzzle', downloads: 2.1 },
-  { id: 4, name: 'Call of Duty Mobile Season 10', desc: 'Multiplayer FPS with new maps.', rating: 4.6, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&h=400&fit=crop', category: 'Shooter', downloads: 950 },
-  { id: 5, name: 'Subway Surfers v4.0 MOD', desc: 'Endless runner with all characters free.', rating: 4.5, image: 'https://images.unsplash.com/photo-1581235684510-1c14ee66fdc5?w=300&h=400&fit=crop', category: 'Arcade', downloads: 1.8 },
-  { id: 6, name: 'Clash of Clans APK Latest', desc: 'Strategy base builder with max gems.', rating: 4.9, image: 'https://images.unsplash.com/photo-1570549717069-d1ce23b3f722?w=300&h=400&fit=crop', category: 'Strategy', downloads: 3.2 },
-  { id: 7, name: 'Free Fire MAX Diamond Hack', desc: 'Battle royale with auto headshot.', rating: 4.4, image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&h=400&fit=crop', category: 'Action', downloads: 2.5 },
-  { id: 8, name: 'Among Us MOD All Skins', desc: 'Imposter mode with custom cosmetics.', rating: 4.7, image: 'https://images.unsplash.com/photo-1605818427530-7e268bbffcaf?w=300&h=400&fit=crop', category: 'Multiplayer', downloads: 1.1 },
+  { id: 1, name: 'Warframe Mobile', desc: 'Epic action RPG with co-op gameplay. Launching Feb 18, 2026. Free to play with crossplay support.', rating: 4.9, image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=300&h=400&fit=crop', category: 'RPG', downloads: 2.5 },
+  { id: 2, name: 'Tomb Raider (2013)', desc: 'Full adventure game on mobile. Touch controls and gamepad support. Releases Feb 12, 2026.', rating: 4.8, image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop', category: 'Action', downloads: 1.8 },
+  { id: 3, name: 'Brawl Stars MOD v65.219', desc: 'Mod menu with unlimited money and gems. Latest 2026 version with anti-ban protection.', rating: 4.7, image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300&h=400&fit=crop', category: 'Multiplayer', downloads: 3.2 },
+  { id: 4, name: 'Dragon Ball Legends MOD v6.17.0', desc: 'God mode and one-hit kill enabled. All characters unlocked with unlimited crystals.', rating: 4.8, image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&h=400&fit=crop', category: 'Action', downloads: 2.1 },
+  { id: 5, name: 'Pixel Gun 3D MOD v26.4.0', desc: 'Unlimited ammo with anti-ban system. All weapons and skins unlocked for free.', rating: 4.6, image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=400&fit=crop', category: 'Shooter', downloads: 1.9 },
+  { id: 6, name: 'CapCut MOD v16.8.0', desc: 'No watermark video editor. All premium features and effects unlocked completely free.', rating: 4.9, image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=300&h=400&fit=crop', category: 'Productivity', downloads: 4.5 },
+  { id: 7, name: 'Cricket League MOD v1.31.1', desc: 'Unlimited money and mod menu. Play with all teams and stadiums unlocked.', rating: 4.5, image: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=300&h=400&fit=crop', category: 'Sports', downloads: 1.3 },
+  { id: 8, name: 'Silt - Horror Puzzle Game', desc: 'Dark underwater adventure with terrifying deep-sea creatures. Free to try, unique art style.', rating: 4.7, image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=400&fit=crop', category: 'Puzzle', downloads: 850 },
+  { id: 9, name: 'TikTok MOD v28.4', desc: 'Premium unlocked with no ads. Download videos without watermark and access all features.', rating: 4.6, image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=300&h=400&fit=crop', category: 'Social', downloads: 5.2 },
+  { id: 10, name: 'Mortal Kombat MOD v7.1.0', desc: 'Unlimited money and souls with mod menu. All characters unlocked with max stats.', rating: 4.8, image: 'https://images.unsplash.com/photo-1556438064-2d7646166914?w=300&h=400&fit=crop', category: 'Action', downloads: 2.3 },
 ];
 
 const reviews: Review[] = [
-  { id: 1, title: 'Best PUBG MOD Ever!', author: 'GamerProX', text: 'Smooth gameplay, legit unlimited UC. No bans detected.', rating: 5 },
-  { id: 2, title: 'Genshin APK Rocks', author: 'OtakuQueen', text: 'Updated characters without root. Highly recommend.', rating: 4.5 },
-  { id: 3, title: 'Candy Crush Hack Works', author: 'SweetTooth', text: 'Infinite boosters make it fun forever.', rating: 4.8 },
+  { id: 1, title: 'Warframe Mobile is INSANE!', author: 'MobileGamerPro', text: 'Finally on Android! Runs smooth on my device. Co-op works perfectly. This is the future of mobile gaming.', rating: 5 },
+  { id: 2, title: 'CapCut MOD Changed My Life', author: 'ContentCreator22', text: 'No watermark is a game changer. All premium effects free. Best video editor for Android hands down.', rating: 4.5 },
+  { id: 3, title: 'Brawl Stars MOD Works Great', author: 'ProGamer_YT', text: 'Unlimited gems and no ban. Been using for weeks. All brawlers unlocked instantly.', rating: 4.8 },
 ];
 
 const guides: Guide[] = [
-  { id: 1, title: 'How to Install XAPK Files Safely', desc: 'Step-by-step guide with Split APKs.', image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=200&fit=crop', readTime: '5 min' },
-  { id: 2, title: 'Best Settings for PUBG Mobile 2026', desc: 'Optimize FPS and graphics for low-end devices.', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop', readTime: '7 min' },
-  { id: 3, title: 'Top 10 Android Games Free Download', desc: 'Curated list with direct MOD links.', image: 'https://images.unsplash.com/photo-1464822759023-fed622b8be9b?w=300&h=200&fit=crop', readTime: '10 min' },
+  { id: 1, title: 'How to Install MOD APKs Safely in 2026', desc: 'Complete guide to installing modified apps without getting banned or infected.', image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=200&fit=crop', readTime: '5 min' },
+  { id: 2, title: 'Warframe Mobile: Beginner Guide', desc: 'Everything you need to know before starting. Best frames, weapons, and mods for new players.', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop', readTime: '8 min' },
+  { id: 3, title: 'Top 10 Trending Android Games February 2026', desc: 'Latest viral games and MOD APKs everyone is downloading this month.', image: 'https://images.unsplash.com/photo-1464822759023-fed622b8be9b?w=300&h=200&fit=crop', readTime: '6 min' },
 ];
 
-const categories = ['Action', 'RPG', 'Puzzle', 'Shooter', 'Arcade', 'Strategy', 'Multiplayer'];
+const categories = ['Action', 'RPG', 'Puzzle', 'Shooter', 'Sports', 'Multiplayer', 'Social', 'Productivity'];
 
 export function App() {
   const [search, setSearch] = useState('');
@@ -105,10 +107,10 @@ export function App() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-cyan-400 via-white to-purple-500 bg-clip-text text-transparent mb-6 tracking-tight">
-            Premium APKs & Games
+            Trending APKs February 2026
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Download MOD APKs, latest mobile games, expert reviews & installation guides. Safe, fast & free.
+            Download viral MOD APKs, latest mobile games & apps. Warframe Mobile, Tomb Raider, CapCut MOD & more. Safe, fast & free.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <div className="relative flex-1">
@@ -133,10 +135,10 @@ export function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
-              Featured Downloads
+              Viral Downloads This Week
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Top rated APKs & MOD Games this week
+              Top trending APKs & MOD Games - February 2026
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
