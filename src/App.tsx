@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Game {
   id: number;
@@ -26,19 +26,6 @@ interface Guide {
   readTime: string;
 }
 
-const games: Game[] = [
-  { id: 1, name: 'Warframe Mobile', desc: 'Epic action RPG with co-op gameplay. Launching Feb 18, 2026. Free to play with crossplay support.', rating: 4.9, image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=300&h=400&fit=crop', category: 'RPG', downloads: 2.5 },
-  { id: 2, name: 'Tomb Raider (2013)', desc: 'Full adventure game on mobile. Touch controls and gamepad support. Releases Feb 12, 2026.', rating: 4.8, image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=300&h=400&fit=crop', category: 'Action', downloads: 1.8 },
-  { id: 3, name: 'Brawl Stars MOD v65.219', desc: 'Mod menu with unlimited money and gems. Latest 2026 version with anti-ban protection.', rating: 4.7, image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300&h=400&fit=crop', category: 'Multiplayer', downloads: 3.2 },
-  { id: 4, name: 'Dragon Ball Legends MOD v6.17.0', desc: 'God mode and one-hit kill enabled. All characters unlocked with unlimited crystals.', rating: 4.8, image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&h=400&fit=crop', category: 'Action', downloads: 2.1 },
-  { id: 5, name: 'Pixel Gun 3D MOD v26.4.0', desc: 'Unlimited ammo with anti-ban system. All weapons and skins unlocked for free.', rating: 4.6, image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=400&fit=crop', category: 'Shooter', downloads: 1.9 },
-  { id: 6, name: 'CapCut MOD v16.8.0', desc: 'No watermark video editor. All premium features and effects unlocked completely free.', rating: 4.9, image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=300&h=400&fit=crop', category: 'Productivity', downloads: 4.5 },
-  { id: 7, name: 'Cricket League MOD v1.31.1', desc: 'Unlimited money and mod menu. Play with all teams and stadiums unlocked.', rating: 4.5, image: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=300&h=400&fit=crop', category: 'Sports', downloads: 1.3 },
-  { id: 8, name: 'Silt - Horror Puzzle Game', desc: 'Dark underwater adventure with terrifying deep-sea creatures. Free to try, unique art style.', rating: 4.7, image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=400&fit=crop', category: 'Puzzle', downloads: 850 },
-  { id: 9, name: 'TikTok MOD v28.4', desc: 'Premium unlocked with no ads. Download videos without watermark and access all features.', rating: 4.6, image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=300&h=400&fit=crop', category: 'Social', downloads: 5.2 },
-  { id: 10, name: 'Mortal Kombat MOD v7.1.0', desc: 'Unlimited money and souls with mod menu. All characters unlocked with max stats.', rating: 4.8, image: 'https://images.unsplash.com/photo-1556438064-2d7646166914?w=300&h=400&fit=crop', category: 'Action', downloads: 2.3 },
-];
-
 const reviews: Review[] = [
   { id: 1, title: 'Warframe Mobile is INSANE!', author: 'MobileGamerPro', text: 'Finally on Android! Runs smooth on my device. Co-op works perfectly. This is the future of mobile gaming.', rating: 5 },
   { id: 2, title: 'CapCut MOD Changed My Life', author: 'ContentCreator22', text: 'No watermark is a game changer. All premium effects free. Best video editor for Android hands down.', rating: 4.5 },
@@ -57,6 +44,26 @@ export function App() {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+  const [games, setGames] = useState<Game[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch APKs from backend API
+  useEffect(() => {
+    fetchAPKs();
+  }, []);
+
+  const fetchAPKs = async () => {
+    try {
+      const response = await fetch('https://bot-production-df1e.up.railway.app/api/apks');
+      const data = await response.json();
+      setGames(data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Failed to fetch APKs:', error);
+      setLoading(false);
+    }
+  };
+
   const filteredGames = games.filter(game =>
     game.name.toLowerCase().includes(search.toLowerCase()) &&
     (selectedCategory === 'All' || game.category === selectedCategory)
@@ -143,7 +150,17 @@ export function App() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredGames.slice(0,8).map((game) => (
+            {loading ? (
+              <div className="col-span-full text-center py-20">
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-400"></div>
+                <p className="mt-4 text-gray-400">Loading APKs...</p>
+              </div>
+            ) : filteredGames.length === 0 ? (
+              <div className="col-span-full text-center py-20">
+                <p className="text-gray-400 text-xl">No APKs found. Post something in your Telegram channel!</p>
+              </div>
+            ) : (
+              filteredGames.slice(0,8).map((game) => (
               <div
                 key={game.id}
                 className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 hover:bg-white/10 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 overflow-hidden hover:scale-105 hover:rotate-1"
@@ -170,7 +187,8 @@ export function App() {
                   Download APK
                 </button>
               </div>
-            ))}
+            ))
+            )}
           </div>
         </div>
       </section>
@@ -294,13 +312,33 @@ export function App() {
             </div>
 
             <div className="space-y-3">
+              {selectedGame.downloadUrl && (
+                <a 
+                  href={selectedGame.downloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-2xl py-4 px-6 font-bold text-center shadow-lg shadow-cyan-500/25 hover:shadow-2xl hover:shadow-cyan-400/40 transition-all duration-300 text-white"
+                >
+                  📥 Download APK from Telegram
+                </a>
+              )}
+              {selectedGame.telegramMessageId && (
+                <a 
+                  href={`https://t.me/${selectedGame.sourceChannel?.replace('@', '')}/${selectedGame.telegramMessageId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-blue-600 hover:bg-blue-500 rounded-2xl py-4 px-6 font-bold text-center shadow-lg transition-all duration-300 text-white"
+                >
+                  📱 View in Telegram Channel
+                </a>
+              )}
               <a 
                 href={`https://www.apkmirror.com/?s=${encodeURIComponent(selectedGame.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-2xl py-4 px-6 font-bold text-center shadow-lg shadow-cyan-500/25 hover:shadow-2xl hover:shadow-cyan-400/40 transition-all duration-300 text-white"
+                className="block w-full bg-white/5 hover:bg-white/10 border border-white/20 rounded-2xl py-3 px-6 font-semibold text-center transition-all duration-300 text-gray-300"
               >
-                Download APK Now
+                🔍 Search on APKMirror
               </a>
               <button 
                 onClick={() => setSelectedGame(null)}
