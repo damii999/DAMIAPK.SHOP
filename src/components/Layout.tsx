@@ -16,11 +16,11 @@ export function Layout({ children }: LayoutProps) {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-black/30 border-b border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-3">
               <img 
                 src="/main logo.png.png" 
                 alt="DamiAPK Logo" 
-                className="w-10 h-10 rounded-xl shadow-lg shadow-cyan-500/50 object-contain"
+                className="h-12 w-auto object-contain"
               />
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent tracking-tight">DamiAPK</span>
             </Link>
@@ -70,11 +70,11 @@ export function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center space-x-3 mb-4">
                 <img 
                   src="/main logo.png.png" 
                   alt="DamiAPK Logo" 
-                  className="w-8 h-8 rounded-lg object-contain"
+                  className="h-10 w-auto object-contain"
                 />
                 <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">DamiAPK</span>
               </div>
