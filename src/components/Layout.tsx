@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 interface LayoutProps {
   children: ReactNode;
@@ -7,6 +7,7 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const isActive = (path: string) => location.pathname === path;
 
@@ -25,6 +26,7 @@ export function Layout({ children }: LayoutProps) {
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent tracking-tight">DamiAPK</span>
             </Link>
             
+            {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-6">
               <Link 
                 to="/" 
@@ -55,11 +57,56 @@ export function Layout({ children }: LayoutProps) {
               </button>
             </div>
             
+            {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <button className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">☰</button>
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                {mobileMenuOpen ? '✕' : '☰'}
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10">
+            <div className="px-4 py-4 space-y-3">
+              <Link 
+                to="/" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-xl font-medium transition-all ${isActive('/') ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white' : 'text-gray-300 hover:bg-white/10'}`}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/downloads" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-xl font-medium transition-all ${isActive('/downloads') ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white' : 'text-gray-300 hover:bg-white/10'}`}
+              >
+                Downloads
+              </Link>
+              <Link 
+                to="/reviews" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-xl font-medium transition-all ${isActive('/reviews') ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white' : 'text-gray-300 hover:bg-white/10'}`}
+              >
+                Reviews
+              </Link>
+              <Link 
+                to="/guides" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-xl font-medium transition-all ${isActive('/guides') ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white' : 'text-gray-300 hover:bg-white/10'}`}
+              >
+                Guides
+              </Link>
+              <button className="w-full px-4 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-xl shadow-lg font-medium transition-all">
+                Upload APK
+              </button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Main Content */}
