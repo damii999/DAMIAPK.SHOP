@@ -114,6 +114,7 @@ export function Layout({ children }: LayoutProps) {
           
           <div className="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
             <p>© 2026 DamiAPK.shop. All rights reserved. Safe APK downloads.</p>
+            <Link to="/admin" className="text-gray-700 hover:text-gray-600 text-xs mt-2 inline-block">•</Link>
           </div>
         </div>
       </footer>
