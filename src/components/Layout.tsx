@@ -18,9 +18,9 @@ export function Layout({ children }: LayoutProps) {
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center space-x-3">
               <img 
-                src="/Design sans titre.png" 
+                src="/logo.svg" 
                 alt="DamiAPK Logo" 
-                className="h-14 w-auto object-contain"
+                className="h-12 w-12 object-contain"
               />
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent tracking-tight">DamiAPK</span>
             </Link>
@@ -72,9 +72,9 @@ export function Layout({ children }: LayoutProps) {
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <img 
-                  src="/Design sans titre.png" 
+                  src="/logo.svg" 
                   alt="DamiAPK Logo" 
-                  className="h-12 w-auto object-contain"
+                  className="h-10 w-10 object-contain"
                 />
                 <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">DamiAPK</span>
               </div>
