@@ -17,7 +17,11 @@ export function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-xl shadow-lg shadow-cyan-500/50 animate-pulse" />
+              <img 
+                src="/main logo.png.png" 
+                alt="DamiAPK Logo" 
+                className="w-10 h-10 rounded-xl shadow-lg shadow-cyan-500/50 object-contain"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent tracking-tight">DamiAPK</span>
             </Link>
             
@@ -67,7 +71,11 @@ export function Layout({ children }: LayoutProps) {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-lg" />
+                <img 
+                  src="/main logo.png.png" 
+                  alt="DamiAPK Logo" 
+                  className="w-8 h-8 rounded-lg object-contain"
+                />
                 <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">DamiAPK</span>
               </div>
               <p className="text-gray-400 text-sm">Your trusted source for safe APK downloads and mobile gaming.</p>
