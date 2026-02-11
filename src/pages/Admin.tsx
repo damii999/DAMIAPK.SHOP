@@ -20,7 +20,7 @@ export function Admin() {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const ADMIN_PASSWORD = 'damiapk2026'; // Change this to your secure password
+  const ADMIN_PASSWORD = '1509Merry'; // Change this to your secure password
 
   useEffect(() => {
     if (isAuthenticated) {
