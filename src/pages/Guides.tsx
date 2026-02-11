@@ -71,6 +71,25 @@ export function Guides() {
           <p className="text-xl text-gray-400">Learn how to safely install and use APKs</p>
         </div>
 
+        {/* Video Tutorial Section */}
+        <div className="mb-16 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-3xl p-8">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold mb-2">📹 Video Tutorial</h2>
+            <p className="text-gray-400">Watch our step-by-step installation guide</p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-green-500/20" style={{ paddingBottom: '56.25%' }}>
+              <iframe 
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/Ehlzt2OXI4c"
+                title="APK Installation Guide"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Featured Guide */}
         <div className="mb-16 relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30">
           <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
